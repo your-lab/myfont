@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네임스티커 미리보기</title>
+    <style>
+        :root {
+            --primary-color: #ff8e8e;
+            --bg-sticker: #ffffff;
+        }
+        body { font-family: sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
+        .app-container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 450px; text-align: center; }
+        
+        /* 스티커 미리보기 영역 */
+        .sticker-canvas {
+            width: 100%; height: 180px; background-color: var(--bg-sticker);
+            border: 2px solid #eee; border-radius: 10px; margin: 20px 0;
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden; transition: all 0.3s;
+        }
+        .preview-text { font-size: 50px; color: #333; word-break: break-all; padding: 10px; }
+
+        /* 입력창 및 컨트롤 */
+        input[type="text"] { width: 80%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 18px; margin-bottom: 20px; }
+        
+        .section-title { font-size: 14px; color: #888; margin-bottom: 10px; text-align: left; }
+        .options-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
+        
+        button { padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: white; cursor: pointer; transition: 0.2s; font-size: 14px; }
+        button.active { border-color: var(--primary-color); color: var(--primary-color); font-weight: bold; background: #fff5f5; }
+
+        /* 배경색 선택 버튼 */
+        .color-options { display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; }
+        .color-dot { width: 30px; height: 30px; border-radius: 50%; border: 2px solid #eee; cursor: pointer; }
+
+        /* 폰트 등록 (파일이 있는 경우에만 작동) */
+        @font-face { font-family: 'Font1'; src: url('font1.woff2') format('woff2'); }
+        @font-face { font-family: 'Font2'; src: url('font2.woff2') format('woff2'); }
+        /* 3, 4, 5번 반복 등록 */
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <h2>✨ 네임스티커 미리보기</h2>
+    <p style="color:#666; font-size:13px;">글자를 입력하고 아래 폰트를 눌러보세요!</p>
+
+    <input type="text" id="nameInput" placeholder="이름을 입력하세요" maxlength="8">
+
+    <div class="section-title">미리보기 (스티커 색상 선택)</div>
+    <div class="color-options">
+        <div class="color-dot" style="background:#fff;" onclick="changeBg('#fff')"></div>
+        <div class="color-dot" style="background:#eee;" onclick="changeBg('#eee')"></div> <div class="color-dot" style="background:#ffeaa7;" onclick="changeBg('#ffeaa7')"></div> </div>
+
+    <div class="sticker-canvas" id="canvas">
+        <span id="previewText" class="preview-text">홍길동</span>
+    </div>
+
+    <div class="section-title">폰트 선택</div>
+    <div class="options-grid">
+        <button onclick="changeFont(this, 'Font1')">귀여운 둥근체</button>
+        <button onclick="changeFont(this, 'Font2')">정갈한 고딕체</button>
+        <button onclick="changeFont(this, 'Font3')">정성 가득 필기체</button>
+        <button onclick="changeFont(this, 'Font4')">또박또박 바른체</button>
+        <button onclick="changeFont(this, 'Font5')">개성 있는 개구쟁이체</button>
+    </div>
+
+    <button style="width:100%; background:var(--primary-color); color:white; border:none; margin-top:10px;" onclick="alert('주문 페이지로 이동합니다!')">이 설정으로 주문하기</button>
+</div>
+
+<script>
+    const input = document.getElementById('nameInput');
+    const preview = document.getElementById('previewText');
+    const canvas = document.getElementById('canvas');
+
+    input.addEventListener('input', (e) => {
+        preview.textContent = e.target.value || "이름";
+    });
+
+    function changeFont(btn, fontName) {
+        // 모든 버튼에서 active 클래스 제거
+        document.querySelectorAll('.options-grid button').forEach(b => b.classList.remove('active'));
+        // 클릭한 버튼에 active 클래스 추가
+        btn.classList.add('active');
+        // 폰트 변경
+        preview.style.fontFamily = fontName;
+    }
+
+    function changeBg(color) {
+        canvas.style.backgroundColor = color;
+    }
+</script>
+
+</body>
+</html>
