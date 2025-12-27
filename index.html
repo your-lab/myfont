@@ -15,7 +15,7 @@
     <style>
         :root { --primary-color: #ff8e8e; }
         body { font-family: sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
-        .app-container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
+        .app-container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 450px; text-align: center; }
         
         /* 미리보기 영역 */
         .sticker-canvas {
@@ -28,25 +28,30 @@
         input[type="text"] { width: 85%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 18px; margin-bottom: 10px; }
         .section-title { font-size: 14px; color: #888; margin: 20px 0 10px; text-align: left; font-weight: bold; }
         
-        /* 버튼 그리드 */
+        /* 버튼 그리드 (5열로 배치, 폰트가 많아지면 자동으로 줄바꿈됨) */
         .options-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 20px; }
         button { padding: 12px 0; border: 1px solid #ddd; border-radius: 8px; background: white; cursor: pointer; transition: 0.2s; font-size: 14px; }
         button.active { border-color: var(--primary-color); color: var(--primary-color); font-weight: bold; background: #fff5f5; }
 
         /* --- [폰트 연결 설정] --- */
 
-        /* T1: 깃허브에 직접 올린 T1.ttf 파일 연결 */
+        /* T1: 직접 올린 파일 */
         @font-face {
             font-family: 'MyT1Font';
             src: url('T1.ttf') format('truetype'); 
         }
         .font-t1 { font-family: 'MyT1Font', sans-serif; }
 
-        /* T2~T5: 어도비 폰트 설정 */
+        /* T2 ~ T10: Adobe Fonts */
         .font-t2 { font-family: omnigothic, sans-serif; }
         .font-t3 { font-family: rixstraight-pro, sans-serif; }
         .font-t4 { font-family: rixtoystory-pro, sans-serif; }
         .font-t5 { font-family: rixvideogame-pro, sans-serif; }
+        .font-t6 { font-family: ff-market-web, sans-serif; }
+        .font-t7 { font-family: montserrat, sans-serif; }
+        .font-t8 { font-family: proxima-nova, sans-serif; }
+        .font-t9 { font-family: shrikhand, sans-serif; }
+        .font-t10 { font-family: new-zen, sans-serif; }
     </style>
 </head>
 <body>
@@ -68,6 +73,11 @@
         <button onclick="changeFont(this, 'font-t3')">T3</button>
         <button onclick="changeFont(this, 'font-t4')">T4</button>
         <button onclick="changeFont(this, 'font-t5')">T5</button>
+        <button onclick="changeFont(this, 'font-t6')">T6</button>
+        <button onclick="changeFont(this, 'font-t7')">T7</button>
+        <button onclick="changeFont(this, 'font-t8')">T8</button>
+        <button onclick="changeFont(this, 'font-t9')">T9</button>
+        <button onclick="changeFont(this, 'font-t10')">T10</button>
     </div>
 
     <p style="font-size: 12px; color: #ccc; margin-top: 20px;">* 화면에 보이는 느낌과 실제 제작물은 차이가 있을 수 있습니다.</p>
